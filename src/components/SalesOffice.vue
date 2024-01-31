@@ -52,8 +52,8 @@ function calculateSalesSumByDate(salesData, date1, date2) {
       <tbody>
         <tr v-for="salesdata in salesSumArray" :key="salesdata.지점명">
           <td class="center-align">{{ salesdata.지점명 }}</td>
-          <td class="right-align">{{ salesdata['2024-02-04 매출액'].toLocaleString() }}원</td>
-          <td class="right-align">{{ salesdata['2024-02-05 매출액'].toLocaleString() }}원</td>
+          <td class="right-align">{{ salesdata['2024-02-04 매출액'].toLocaleString() }}</td>
+          <td class="right-align">{{ salesdata['2024-02-05 매출액'].toLocaleString() }}</td>
         </tr>
       </tbody>
     </table>
