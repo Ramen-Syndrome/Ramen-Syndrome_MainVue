@@ -1,11 +1,17 @@
 <script setup>
-import { ref } from 'vue'
-//import daily from './components/SalesDaily.vue';
-//import history from './components/SalesHistory.vue';
-import office from './components/SalesOffice.vue';
-//import product from './components/SalesProduct.vue';
+import salesproduct from './components/SalesProduct.vue'
+import saleshistory from './components/SalesHistory.vue'
+import salesoffice from './components/SalesOffice.vue'
 </script>
 
 <template>
-  <office/>
+   <saleshistory/>'
+</script>
+
+<template>
+   <salesproduct/>
+</template>
+
+<template>
+    <salesoffice/>
 </template>
