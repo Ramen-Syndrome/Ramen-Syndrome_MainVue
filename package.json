@@ -1,24 +1,18 @@
 {
-  "name": "ramen-syndrome_mainvue",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "name": "ramen-syndrome-mainvue",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ramen-Syndrome/Ramen-Syndrome_MainVue.git"
+  "dependencies": {
+    "vue": "^3.4.15"
   },
-  "keywords": [
-    "main",
-    "Ramen",
-    "mini3"
-  ],
-  "author": "seull1",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ramen-Syndrome/Ramen-Syndrome_MainVue/issues"
-  },
-  "homepage": "https://github.com/Ramen-Syndrome/Ramen-Syndrome_MainVue#readme"
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.0.11"
+  }
 }
