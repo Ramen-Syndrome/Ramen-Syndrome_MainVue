@@ -6,17 +6,9 @@ import salesproduct from './components/SalesProduct.vue';
 </script>
 
 <template>
-    <salesdaily/>   
-</template>
-
-<template>
-   <saleshistory/>
-</template>
-
-<template>
-   <salesproduct/>
-</template>
-
-<template>
+    <salesdaily/>
+    <saleshistory/>
+    <salesproduct/>
     <salesoffice/>
+
 </template>

@@ -4,7 +4,7 @@ import { ref, onMounted, computed } from 'vue';
 const jsonData = ref([]);
 
 async function fetchSalesData(){
-const res = await fetch(`http://localhost:3001/sales`);
+const res = await fetch(`http://localhost:3000/sales`);
     jsonData.value = await res.json();
 }
 
@@ -22,7 +22,7 @@ function calculateSalesSumByStore(salesData) {
         const store = sale.지점명;
         const salesAmount = sale.판매가;
 	const dates = sale.거래날짜;
-        if (!salesSumByStore[store] && dates === '2024-02-05') {
+        if (!salesSumByStore[store]) {
             salesSumByStore[store] = 0;
         }
         salesSumByStore[store] += salesAmount;
