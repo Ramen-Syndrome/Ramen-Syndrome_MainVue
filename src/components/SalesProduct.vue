@@ -8,6 +8,8 @@ async function jsons() {
 }
 
 const jsonData = ref([]);
+let filteredData = ref([]);
+let searchTerm = ref('');
 
 // 데이터를 가져와 jsonData 변수에 할당합니다.
 jsons().then(data => {
@@ -17,39 +19,89 @@ jsons().then(data => {
         if (existingProduct) {
             existingProduct.판매가 += cur.판매가;
             existingProduct.원가 += cur.원가;
+            existingProduct.판매갯수++;
         } else {
-            acc.push({ ...cur });
+            acc.push({ ...cur, 판매갯수: 1 });
         }
         return acc;
     }, []);
     jsonData.value = uniqueProducts;
+filteredData.value = uniqueProducts;
 });
+
+let sortBySalesCountDescending = true;
+
+function searchProduct() {
+    if (!searchTerm.value) {
+        filteredData.value = jsonData.value; // 검색어가 없을 때는 모든 데이터를 filteredData에 복사합니다.
+        return;
+    }
+    filteredData.value = jsonData.value.filter(product => product.상품명.includes(searchTerm.value));
+}
+
+
+function sortBySalesCount() {
+    // 판매 갯수 내림차순
+    if (sortBySalesCountDescending) {
+        jsonData.value.sort((a, b) => b.판매갯수 - a.판매갯수);
+    } else {
+        // 판매 갯수 오름차순
+        jsonData.value.sort((a, b) => a.판매갯수 - b.판매갯수);
+    }
+    sortBySalesCountDescending = !sortBySalesCountDescending;
+}
+
+function sortByTotalSales() {
+    // 총 매출액
+    jsonData.value.sort((a, b) => (b.판매가 - b.원가) - (a.판매가 - a.원가));
+}
+
+function sortByName() {
+    // 이름 순 정렬
+    jsonData.value.sort((a, b) => a.상품명.localeCompare(b.상품명));
+}
+
 </script>
 
 <template>
   <div>
     <h1>상품별 매출 내역</h1>
+    <button @click="sortByName">이름 순 정렬</button>
+    <!-- 판매 갯수 버튼 수정 -->
+    <button @click="sortBySalesCount">판매 갯수 순위 보기</button>
+    <button @click="sortByTotalSales">총 매출액 순위 보기</button>
+<input type="text" v-model="searchTerm" placeholder="검색어를 입력하세요">
+    <button @click="searchProduct">상품 검색</button>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
             <th>상품명</th>
+            <th>개당 원가</th>
+            <th>개당 판매가</th>
+            <th>판매 갯수</th>
+            <th>개당 매출액</th>
             <th>원가</th>
-            <th>판매가</th>
+            <th>판매가격</th>
+            <th>총 매출액</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in jsonData" :key="product.상품명">
+          <tr v-for="product in filteredData" :key="product.상품명">
             <td>{{ product.상품명 }}</td>
+            <td>{{ product.원가 / product.판매갯수 }}</td>
+            <td>{{ product.판매가 / product.판매갯수 }}</td>
+            <td>{{ product.판매갯수 }}</td>
+            <td>{{ (product.판매가 - product.원가) / product.판매갯수 }}</td>
             <td>{{ product.원가 }}</td>
             <td>{{ product.판매가 }}</td>
+            <td>{{ product.판매가 - product.원가 }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </template>
-
 
 
 <style>
