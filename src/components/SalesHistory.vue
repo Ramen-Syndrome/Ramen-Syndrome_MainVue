@@ -41,7 +41,7 @@ function calculateSalesSumByStore(salesData) {
       <thead>
         <tr>
           <th>지점명</th>
-          <th>판매가 합계</th>
+          <th>전월 매출액</th>
         </tr>
       </thead>
       <tbody>
