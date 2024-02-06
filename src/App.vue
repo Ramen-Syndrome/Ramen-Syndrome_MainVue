@@ -1,11 +1,22 @@
 <script setup>
-import daily from './components/SalesDaily.vue';
-//import history from './components/SalesHistory.vue';
-//import office from './components/SalesOffice.vue';
-//import product from './components/SalesProduct.vue';
-
+import salesdaily from './components/SalesDaily.vue';
+import saleshistory from './components/SalesHistory.vue';
+import salesoffice from './components/SalesOffice.vue';
+import salesproduct from './components/SalesProduct.vue';
 </script>
 
 <template>
-  <daily />
+    <salesdaily/>   
+</template>
+
+<template>
+   <saleshistory/>
+</template>
+
+<template>
+   <salesproduct/>
+</template>
+
+<template>
+    <salesoffice/>
 </template>

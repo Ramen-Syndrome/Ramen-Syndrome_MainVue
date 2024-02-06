@@ -39,4 +39,3 @@ const dailySalesArray = computed(() => {
     </table>
   </div>
 </template>
-
