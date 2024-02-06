@@ -1,12 +1,17 @@
 <script setup>
-import salesproduct from './components/SalesProduct.vue'
-import saleshistory from './components/SalesHistory.vue'
-import salesoffice from './components/SalesOffice.vue'
+import salesdaily from './components/SalesDaily.vue';
+import saleshistory from './components/SalesHistory.vue';
+import salesoffice from './components/SalesOffice.vue';
+import salesproduct from './components/SalesProduct.vue';
 </script>
 
 <template>
-   <saleshistory/>'
-</script>
+    <salesdaily/>   
+</template>
+
+<template>
+   <saleshistory/>
+</template>
 
 <template>
    <salesproduct/>
