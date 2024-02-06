@@ -67,6 +67,7 @@ function sortByName() {
 <template>
   <div>
     <h1 class="center-align">2024년 상품별 판매 현황</h1>
+<br>
     <button @click="sortByName">이름 순 정렬</button>
     <!-- 판매 갯수 버튼 수정 -->
     <button @click="sortBySalesCount">판매 갯수 순위 보기</button>
