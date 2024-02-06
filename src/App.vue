@@ -1,10 +1,11 @@
 <script setup>
-import child from './components/SalesDaily.vue'
-import child from './components/SalesHistory.vue'
-import child from './components/SalesOffice.vue'
-import child from './components/SalesProduct.vue'
+import daily from './components/SalesDaily.vue';
+//import history from './components/SalesHistory.vue';
+//import office from './components/SalesOffice.vue';
+//import product from './components/SalesProduct.vue';
+
 </script>
 
 <template>
-   <child/>
+  <daily />
 </template>
