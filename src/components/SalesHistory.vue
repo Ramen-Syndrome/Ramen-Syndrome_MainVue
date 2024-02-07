@@ -5,7 +5,8 @@ const jsonData = ref([]);
 
 // 데이터를 json 서버에서 가져오는 비동기 함수
 async function fetchSalesData() {
-    const res = await fetch(`http://localhost:3000/sales`);
+    //const res = await fetch(`http://localhost:3000/sales`);
+    const res = await fetch(`https://ramen-syndrome-jsonserver.fly.dev/sales`);
     jsonData.value = await res.json();
 }
 
