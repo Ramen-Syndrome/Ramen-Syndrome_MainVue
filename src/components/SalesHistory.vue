@@ -58,7 +58,7 @@ function calculateSalesSumByMonth(salesData, prevMonth, currMonth) {
       </thead>
       <tbody>
         <tr v-for="salesdata in salesSumArray" :key="salesdata.지점명">
-          <td>{{ salesdata.지점명 }}</td>
+          <td class="center-align">{{ salesdata.지점명 }}</td>
           <td class="right-align">{{ (salesdata.전월매출누계).toLocaleString() }}</td>
           <td class="right-align">{{ (salesdata.당월매출누계).toLocaleString() }}</td>
         </tr>
