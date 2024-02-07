@@ -2,7 +2,8 @@
 import { ref } from 'vue';
 
 async function jsons() {
-    const response = await fetch("http://localhost:3000/sales");
+    //const response = await fetch("http://localhost:3000/sales");
+    const response = await fetch("https://ramen-syndrome-jsonserver.fly.dev/sales");
     const jsonData = await response.json();
     return jsonData;
 }
@@ -65,7 +66,7 @@ function sortByName() {
 
 <template>
   <div>
-    <h1 class="center-align">당월 상품별 매출 내역</h1>
+    <h1 class="center-align">2024년 상품별 판매 현황</h1>
     <button @click="sortByName">이름 순 정렬</button>
     <!-- 판매 갯수 버튼 수정 -->
     <button @click="sortBySalesCount">판매 갯수 순위 보기</button>
