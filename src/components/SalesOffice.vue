@@ -39,30 +39,43 @@ function calculateSalesSumByDate(salesData, date1, date2) {
 
 <template>
   <div>
-    <h1>지점별 2024년 2월 4일과 2024년 2월 5일 매출 실적</h1>
+    <h1 class="center-align">지점별 2024년 2월 4일~ 5일 매출 실적</h1>
+    <h5 class="right-align"> 단위: 원 </h5>
     <table class="sales-table">
       <thead>
         <tr>
-          <th>지점명</th>
-          <th>2024-02-04 매출액</th>
-          <th>2024-02-05 매출액</th>
+          <th class="center-align">지점명</th>
+          <th class="center-align">2024-02-04 매출액</th>
+          <th class="center-align">2024-02-05 매출액</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="salesdata in salesSumArray" :key="salesdata.지점명">
-          <td>{{ salesdata.지점명 }}</td>
-          <td>{{ salesdata['2024-02-04 매출액'].toLocaleString() }}원</td>
-          <td>{{ salesdata['2024-02-05 매출액'].toLocaleString() }}원</td>
+          <td class="center-align">{{ salesdata.지점명 }}</td>
+          <td class="right-align">{{ salesdata['2024-02-04 매출액'].toLocaleString() }}원</td>
+          <td class="right-align">{{ salesdata['2024-02-05 매출액'].toLocaleString() }}원</td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
 
-<style scoped>
-.sales-table th, .sales-table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+<style>
+  h1.center-align{
+    text-align: center; /* 중앙 정렬 */ 
+  }
+
+  h5.right-align {
+      text-align: right; /* 우측 정렬 */
+  }
+
+/* 테이블 헤더와 데이터 셀에 대한 중앙 정렬 */
+table th.center-align, table td.center-align {
+    text-align: center;
+}
+
+/* 테이블 헤더와 데이터 셀에 대한 우측 정렬 */
+table th.right-align, table td.right-align {
+    text-align: right;
 }
 </style>
