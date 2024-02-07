@@ -46,20 +46,21 @@ function calculateSalesSumByMonth(salesData, prevMonth, currMonth) {
 
 <template>
   <div>
-	<h1> 지점별 전월/당월 매출 집계</h1>
+	<h1 class="center-align"> 지점별 전월/당월 매출 집계</h1>
+  <h5 class="right-align"> 단위: 원 </h5> 
     <table class = "sales-table">
       <thead>
         <tr>
-          <th>지점명</th>
-          <th>전월 매출</th>
-          <th>당월 매출</th>
+          <th class="center-align">지점명</th>
+          <th class="center-align">전월 매출</th>
+          <th class="center-align">당월 매출</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="salesdata in salesSumArray" :key="salesdata.지점명">
           <td>{{ salesdata.지점명 }}</td>
-          <td>{{ (salesdata.전월매출누계).toLocaleString() }}원</td>
-          <td>{{ (salesdata.당월매출누계).toLocaleString() }}원</td>
+          <td class="right-align">{{ (salesdata.전월매출누계).toLocaleString() }}</td>
+          <td class="right-align">{{ (salesdata.당월매출누계).toLocaleString() }}</td>
         </tr>
       </tbody>
     </table>
@@ -68,6 +69,15 @@ function calculateSalesSumByMonth(salesData, prevMonth, currMonth) {
 
 
 <style>
+
+h1.center-align{
+  text-align: center; /* 중앙 정렬 */ 
+}
+
+h5.right-align {
+    text-align: right; /* 우측 정렬 */
+}
+
 .sales-table {
   width: 100%;
   border-collapse: collapse; /* 테두리 겹침을 방지 */
@@ -85,4 +95,13 @@ function calculateSalesSumByMonth(salesData, prevMonth, currMonth) {
 .sales-table thead {
   /*background-color: #f2f2f2; /* 헤더 배경색 */
 }
+
+.sales-table .center-align { /* 테이블 */
+        text-align: center; /* 중앙 정렬 클래스 */
+}
+
+.sales-table .right-align { /* 테이블 */
+        text-align: right; /* 우측 정렬 클래스 */
+}
+
 </style>
