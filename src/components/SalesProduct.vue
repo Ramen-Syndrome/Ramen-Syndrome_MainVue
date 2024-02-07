@@ -2,7 +2,8 @@
 import { ref } from 'vue';
 
 async function jsons() {
-    const response = await fetch("http://localhost:3000/sales");
+    //const response = await fetch("http://localhost:3000/sales");
+    const response = await fetch("https://ramen-syndrome-jsonserver.fly.dev/sales");
     const jsonData = await response.json();
     return jsonData;
 }
@@ -65,37 +66,38 @@ function sortByName() {
 
 <template>
   <div>
-    <h1>상품별 매출 내역</h1>
+    <h1 class="center-align">2024년 상품별 판매 현황</h1>
     <button @click="sortByName">이름 순 정렬</button>
     <!-- 판매 갯수 버튼 수정 -->
     <button @click="sortBySalesCount">판매 갯수 순위 보기</button>
     <button @click="sortByTotalSales">총 매출액 순위 보기</button>
 <input type="text" v-model="searchTerm" placeholder="검색어를 입력하세요">
     <button @click="searchProduct">상품 검색</button>
+    <h5 class="right-align"> 단위: 개,원 </h5>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>상품명</th>
-            <th>개당 원가</th>
-            <th>개당 판매가</th>
-            <th>판매 갯수</th>
-            <th>개당 매출액</th>
-            <th>원가</th>
-            <th>판매가격</th>
-            <th>총 매출액</th>
+            <th class="center-align">상품명</th>
+            <th class="center-align">상품 원가</th>
+            <th class="center-align">판매가</th>
+            <th class="center-align">판매 수량</th>
+            <!-- <th class="center-align">개당 매출액</th> -->
+            <th class="center-align">매출원가</th>
+            <th class="center-align">매출액</th>
+            <th class="center-align">이익액</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="product in filteredData" :key="product.상품명">
             <td>{{ product.상품명 }}</td>
-            <td>{{ product.원가 / product.판매갯수 }}</td>
-            <td>{{ product.판매가 / product.판매갯수 }}</td>
-            <td>{{ product.판매갯수 }}</td>
-            <td>{{ (product.판매가 - product.원가) / product.판매갯수 }}</td>
-            <td>{{ product.원가 }}</td>
-            <td>{{ product.판매가 }}</td>
-            <td>{{ product.판매가 - product.원가 }}</td>
+            <td class="right-align">{{ (product.원가 / product.판매갯수).toLocaleString() }}</td>
+            <td class="right-align">{{ (product.판매가 / product.판매갯수).toLocaleString() }}</td>
+            <td class="right-align">{{ (product.판매갯수).toLocaleString() }}</td>
+            <!-- <td class="right-align">{{ ((product.판매가 - product.원가) / product.판매갯수).toLocaleString() }}</td>  -->
+            <td class="right-align">{{ (product.원가).toLocaleString() }}</td>
+            <td class="right-align">{{ (product.판매가).toLocaleString() }}</td>
+            <td class="right-align">{{ (product.판매가 - product.원가).toLocaleString() }}</td>
           </tr>
         </tbody>
       </table>
@@ -105,6 +107,14 @@ function sortByName() {
 
 
 <style>
+
+  h1.center-align{
+    text-align: center; /* 중앙 정렬 */ 
+  }
+
+  h5.right-align {
+      text-align: right; /* 우측 정렬 */
+  }
   body {
     padding: 1.5em;
     background: #f5f5f5;
@@ -147,6 +157,17 @@ function sortByName() {
   a {
     color: #73685d;
   }
+
+  /* 테이블 헤더와 데이터 셀에 대한 중앙 정렬 */
+  table th.center-align, table td.center-align {
+      text-align: center;
+  }
+
+  /* 테이블 헤더와 데이터 셀에 대한 우측 정렬 */
+  table th.right-align, table td.right-align {
+      text-align: right;
+  }
+
 
   @media all and (max-width: 768px) {
     table, thead, tbody, th, td, tr {
