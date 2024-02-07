@@ -38,7 +38,7 @@ function calculateSalesSumByMonth(salesData, prevMonth, currMonth) {
     return Object.keys(salesSum).map(지점명 => ({
         지점명,
         ...salesSum[지점명]
-    })).sort((a, b) => b.당월매출누계 - a.당월매출누계); // 당월 매출액으로 내림차순 정렬
+    }))//.sort((a, b) => b.당월매출누계 - a.당월매출누계); // 당월 매출액으로 내림차순 정렬
 }
 
 </script>
@@ -46,13 +46,13 @@ function calculateSalesSumByMonth(salesData, prevMonth, currMonth) {
 
 <template>
   <div>
-	<h1> 지점별 전월 매출 실적</h1>
+	<h1> 지점별 전월/당월 매출 집계</h1>
     <table class = "sales-table">
       <thead>
         <tr>
           <th>지점명</th>
-          <th>전월 매출액</th>
-          <th>당월 매출액</th>
+          <th>전월 매출</th>
+          <th>당월 매출</th>
         </tr>
       </thead>
       <tbody>
